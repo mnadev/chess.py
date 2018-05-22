@@ -22,19 +22,21 @@ class Pawn:
             y = int(self.currPos[1])
 
             if y < 8:
-                print(str(x) + " " + str(y))
+
                 if board[(y - 1 + 1)][(x - 97)] is None:
                     moves.append(chr(x) + str(y + 1))
                 elif board[y - 1 + 1][x - 97].color != self.color:
                     moves.append(chr(x) + str(y + 1))
 
                 if x > 97:
-                    if board[y - 1 + 1][x - 97 - 1].color != self.color:
-                        moves.append(chr(x - 1) + str(y + 1))
+                    if not board[y - 1 + 1][x - 97 - 1] is None:
+                        if board[y - 1 + 1][x - 97 - 1].color != self.color:
+                            moves.append(chr(x - 1) + str(y + 1))
 
                 if x < 104:
-                    if board[y - 1 + 1][x - 97 + 1].color != self.color:
-                        moves.append(chr(x + 1) + str(y + 1))
+                    if not board[y - 1 + 1][x - 97 + 1] is None:
+                        if board[y - 1 + 1][x - 97 + 1].color != self.color:
+                            moves.append(chr(x + 1) + str(y + 1))
 
             if self.firstMove:
                 if board[y - 1 + 2][x - 97] is None:
@@ -53,17 +55,19 @@ class Pawn:
                     moves.append(chr(x) + str(y - 1))
 
                 if x < 104:
-                    if board[y - 1 - 1][x - 97 - 1 + 1].color != self.color:
-                        moves.append(chr(x + 1) + str(y - 1))
+                    if not board[y - 1 - 1][x - 97 + 1] is None:
+                        if board[y - 1 - 1][x - 97 + 1].color != self.color:
+                            moves.append(chr(x + 1) + str(y - 1))
 
                 if x > 97:
-                    if board[y - 1 - 1][x - 97 - 1 - 1].color != self.color:
-                        moves.append(chr(x - 1) + str(y - 1))
+                    if not board[y - 1 - 1][x - 97 - 1] is None:
+                        if board[y - 1 - 1][x - 97 - 1].color != self.color:
+                            moves.append(chr(x - 1) + str(y - 1))
 
             if self.firstMove:
                 if board[y - 1 - 2][x - 97] is None:
                     moves.append(chr(x) + str(y - 2))
-                elif board[y - 1 - 2][x - 97 - 1].color != self.color:
+                elif board[y - 1 - 2][x - 97].color != self.color:
                     moves.append(chr(x) + str(y - 2))
 
         return moves

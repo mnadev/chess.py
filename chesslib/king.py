@@ -6,6 +6,26 @@ class King:
         self.currPos = curr_pos
         self.color = color
 
+    def is_in_check(self, board):
+
+        for i in range(0,8):
+
+            for j in range(0,8):
+
+                if not (board[i][j] is None):
+
+                    if board[i][j].color != self.color:
+
+                        list_moves = board[i][j].moves(board)
+
+                        for m in list_moves:
+
+                            if m == self.currPos:
+                                return True
+
+        return False
+
+
     def moves(self, board):
         moves = []
 

@@ -5,9 +5,11 @@ from chesslib.king import King
 from chesslib.pawn import Pawn
 from chesslib.knight import Knight
 
+kW = King("e1","white")
+kB = King("e8","black")
 board = [
     [Rook("a1","white"), Knight("b1","white"), Bishop("c1","white")
-     , Queen("d1","white"), King("e1","white"), Bishop("f1","white")
+     , Queen("d1","white"), kW, Bishop("f1","white")
      , Knight("g1","white"), Rook("h1","white")],
     [Pawn("a2","white"), Pawn("b2","white"), Pawn("c2","white")
      , Pawn("d2","white"), Pawn("e2","white"), Pawn("f2","white")
@@ -20,20 +22,50 @@ board = [
      , Pawn("d7","black"), Pawn("e7","black"), Pawn("f7","black")
      , Pawn("g7","black"), Pawn("h7","black")],
     [Rook("a8","black"), Knight("b8","black"), Bishop("c8","black")
-     , Queen("d8","black"), King("e8","black"), Bishop("f8","black")
+     , Queen("d8","black"), kB, Bishop("f8","black")
      , Knight("g8","black"), Rook("h8","black")]
 ]
 
 
+def checkmate_occured(white_move):
 
-def checkmateOccured():
+    if white_move:
+        color = "black"
+        curr_king = kB
+    else:
+        color = "white"
+        curr_king = kW
 
-    return False;
+    for i in range(0,8):
+
+        for j in range(0,8):
+
+            if not (board[i][j] is None):
+
+                if not board[i][j].color == color:
+
+                    list_moves = board[i][j].moves(board)
+                    curr = board[i][j].currPos
+
+                    for m in list_moves:
+
+                        old_piece = board[int(m[1]) - 1][ord(m[0]) - 97]
+                        move_piece(curr, m)
+
+                        if not curr_king.is_in_check(board):
+                            move_piece(m, curr)
+                            board[int(m[1]) - 1][ord(m[0]) - 97] = old_piece
+                            return False
+
+                        move_piece(m, curr)
+                        board[int(m[1]) - 1][ord(m[0]) - 97] = old_piece
+
+    return True
 
 
-def check_move_validity(piece, curr_pos, new_pos):
+def check_move_validity(piece, new):
     for m in piece.moves(board):
-        if m == new_pos:
+        if m == new:
             return True;
 
     return False
@@ -42,13 +74,13 @@ def check_move_validity(piece, curr_pos, new_pos):
 def ask_user(player):
 
     ask_str = "\n" + player + "\'s move:"
-    move = input(ask_str).strip()
+    inp = input(ask_str).strip()
 
-    while move.strip().__len__() < 5:
+    while inp.strip().__len__() < 5:
         print("Wrong Format")
-        move = input(ask_str).strip()
+        inp = input(ask_str).strip()
 
-    return move
+    return inp
 
 
 def print_board():
@@ -65,10 +97,10 @@ def print_board():
         print(row)
 
 
-def move_piece(curr_pos, new_pos):
-    curr_piece = board[int(curr_pos[1]) - 1][ord(curr_pos[0]) - 97]
-    board[int(new_pos[1]) - 1][ord(new_pos[0]) - 97] = curr_piece
-    board[int(curr_pos[1]) - 1][ord(curr_pos[0]) - 97] = None
+def move_piece(curr, new):
+    piece = board[int(curr[1]) - 1][ord(curr[0]) - 97]
+    board[int(new[1]) - 1][ord(new[0]) - 97] = piece
+    board[int(curr[1]) - 1][ord(curr[0]) - 97] = None
 
 
 if __name__ == '__main__':
@@ -77,7 +109,7 @@ if __name__ == '__main__':
 
     print_board()
 
-    while not checkmateOccured():
+    while not checkmate_occured(whiteMove):
 
         if whiteMove:
             move = ask_user("white")
@@ -98,7 +130,7 @@ if __name__ == '__main__':
 
         curr_piece = board[int(curr_pos[1]) - 1][ord(curr_pos[0]) - 97]
 
-        while not check_move_validity(curr_piece, curr_pos, new_pos):
+        while not check_move_validity(curr_piece, new_pos):
             if whiteMove:
                 move = ask_user("white")
             else:

@@ -29,6 +29,8 @@ class Bishop:
         while x > 97 & y < 8:
             x = x - 1
             y = y + 1
+            print(x)
+            print(y)
             if board[y - 1][x - 97] is None:
                 moves.append(chr(x) + str(y))
             elif board[y - 1][x - 97].color != self.color:
