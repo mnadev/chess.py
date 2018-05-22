@@ -15,9 +15,9 @@ class Bishop:
         while x > 97 & y > 1:
             x = x - 1
             y = y - 1
-            if board[x - 97][y - 1] is None:
+            if board[y - 1][x - 97] is None:
                 moves.append(chr(x) + str(y))
-            elif board[x - 97][y - 1].color != self.color:
+            elif board[y - 1][x - 97].color != self.color:
                 moves.append(chr(x) + str(y))
                 break
             else:
@@ -29,9 +29,9 @@ class Bishop:
         while x > 97 & y < 8:
             x = x - 1
             y = y + 1
-            if board[x - 97][y - 1] is None:
+            if board[y - 1][x - 97] is None:
                 moves.append(chr(x) + str(y))
-            elif board[x - 97][y - 1].color != self.color:
+            elif board[y - 1][x - 97].color != self.color:
                 moves.append(chr(x) + str(y))
                 break
             else:
@@ -43,9 +43,9 @@ class Bishop:
         while x < 104 & y > 1:
             x = x + 1
             y = y - 1
-            if board[x - 97][y - 1] is None:
+            if board[y - 1][x - 97] is None:
                 moves.append(chr(x) + str(y))
-            elif board[x - 97][y - 1].color != self.color:
+            elif board[y - 1][x - 97].color != self.color:
                 moves.append(chr(x) + str(y))
                 break
             else:
@@ -54,9 +54,9 @@ class Bishop:
         while x < 104 & y < 8:
             x = x + 1
             y = y + 1
-            if board[x - 97][y - 1] is None:
+            if board[y - 1][x - 97] is None:
                 moves.append(chr(x) + str(y))
-            elif board[x - 97][y - 1].color != self.color:
+            elif board[y - 1][x - 97].color != self.color:
                 moves.append(chr(x) + str(y))
                 break
             else:
@@ -68,4 +68,4 @@ class Bishop:
         self.currPos = new_pos
 
     def to_string(self):
-        return "b" + self.color[0]
+        return "b" + str(self.color[0])

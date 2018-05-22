@@ -14,54 +14,54 @@ class Knight:
 
         if x < 104:
             if y < 7:
-                if board[x - 97 + 1][y - 1 + 2] is None:
+                if board[y - 1 + 2][x - 97 + 1] is None:
                     moves.append(chr(x + 1) + str(y + 2))
-                elif board[x - 97 + 1][y - 1 + 2].color != self.color:
+                elif board[y - 1 + 2][x - 97 + 1].color != self.color:
                     moves.append(chr(x + 1) + str(y + 2))
 
             if y > 2:
-                if board[x - 97 + 1][y - 1 - 2] is None:
+                if board[y - 1 - 2][x - 97 + 1] is None:
                     moves.append(chr(x + 1) + str(y - 2))
-                elif board[x - 97 + 1][y - 1 - 2].color != self.color:
+                elif board[y - 1 - 2][x - 97 + 1].color != self.color:
                     moves.append(chr(x + 1) + str(y - 2))
 
         if x > 97:
             if y < 7:
-                if board[x - 97 - 1][y - 1 + 2] is None:
+                if board[y - 1 + 2][x - 97 - 1] is None:
                     moves.append(chr(x - 1) + str(y + 2))
-                elif board[x - 97 - 1][y - 1 + 2].color != self.color:
+                elif board[y - 1 + 2][x - 97 - 1].color != self.color:
                     moves.append(chr(x - 1) + str(y + 2))
 
             if y > 2:
-                if board[x - 97 - 1][y - 1 - 2] is None:
+                if board[y - 1 - 2][x - 97 - 1] is None:
                     moves.append(chr(x - 1) + str(y - 2))
-                elif board[x - 97 - 1][y - 1 - 2].color != self.color:
+                elif board[y - 1 - 2][x - 97 - 1].color != self.color:
                     moves.append(chr(x - 1) + str(y - 2))
 
         if y < 7:
             if x < 103:
-                if board[x - 97 + 2][y - 1 + 1] is None:
+                if board[y - 1 + 1][x - 97 + 2] is None:
                     moves.append(chr(x + 2) + str(y + 1))
                 elif board[x - 97 + 2][y - 1 + 1].color != self.color:
                     moves.append(chr(x + 2) + str(y + 1))
 
             if x > 98:
-                if board[x - 97 - 2][y - 1 + 1] is None:
+                if board[y - 1 + 1][x - 97 - 2] is None:
                     moves.append(chr(x - 2) + str(y + 1))
-                elif board[x - 97 - 2][y - 1 + 1].color != self.color:
+                elif board[y - 1 + 1][x - 97 - 2].color != self.color:
                     moves.append(chr(x - 2) + str(y + 1))
 
         if y > 1:
             if x < 103:
-                if board[x - 97 + 2][y - 1 - 1] is None:
+                if board[y - 1 - 1][x - 97 + 2] is None:
                     moves.append(chr(x + 2) + str(y - 1))
-                elif board[x - 97 + 2][y - 1 - 1].color != self.color:
+                elif board[y - 1 - 1][x - 97 + 2].color != self.color:
                     moves.append(chr(x + 2) + str(y - 1))
 
             if x > 98:
-                if board[x - 97 - 2][y - 1 - 1] is None:
+                if board[y - 1 - 1][x - 97 - 2] is None:
                     moves.append(chr(x - 2) + str(y - 1))
-                elif board[x - 97 - 2][y - 1 - 1].color != self.color:
+                elif board[y - 1 - 1][x - 97 - 2].color != self.color:
                     moves.append(chr(x - 2) + str(y - 1))
 
         return moves

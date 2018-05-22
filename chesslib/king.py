@@ -13,51 +13,51 @@ class King:
         y = int(self.currPos[1])
 
         if y < 8:
-            if board[x - 97][y - 1 + 1] is None:
+            if board[y - 1 + 1][x - 97] is None:
                 moves.append(chr(x) + str(y + 1))
-            elif board[x - 97][y - 1 + 1].color != self.color:
+            elif board[y - 1 + 1][x - 97].color != self.color:
                 moves.append(chr(x) + str(y + 1))
 
             if x < 104:
-                if board[x - 97 + 1][y - 1 + 1] is None:
+                if board[y - 1 + 1][x - 97 + 1] is None:
                     moves.append(chr(x + 1) + str(y + 1))
-                elif board[x - 97 + 1][y - 1 + 1].color != self.color:
+                elif board[y - 1 + 1][x - 97 + 1].color != self.color:
                     moves.append(chr(x + 1) + str(y + 1))
 
             if x > 97:
-                if board[x - 97 - 1][y - 1 + 1] is None:
+                if board[y - 1 + 1][x - 97 - 1] is None:
                     moves.append(chr(x - 1) + str(y + 1))
-                elif board[x - 97 - 1][y - 1 + 1].color != self.color:
+                elif board[y - 1 + 1][x - 97 - 1].color != self.color:
                     moves.append(chr(x - 1) + str(y + 1))
 
         if y > 1:
-            if board[x - 97][y - 1 - 1] is None:
+            if board[y - 1 - 1][x - 97] is None:
                 moves.append(chr(x) + str(y - 1))
-            elif board[x - 97][y - 1 - 1].color != self.color:
+            elif board[y - 1 - 1][x - 97].color != self.color:
                 moves.append(chr(x) + str(y - 1))
 
             if x < 104:
-                if board[x - 97 + 1][y - 1 - 1] is None:
+                if board[y - 1 - 1][x - 97 + 1] is None:
                     moves.append(chr(x + 1) + str(y - 1))
-                elif board[x - 97 + 1][y - 1 - 1].color != self.color:
+                elif board[y - 1 - 1][x - 97 + 1].color != self.color:
                     moves.append(chr(x + 1) + str(y - 1))
 
             if x > 97:
-                if board[x - 97 - 1][y - 1 - 1] is None:
+                if board[y - 1 - 1][x - 97 - 1] is None:
                     moves.append(chr(x - 1) + str(y - 1))
-                elif board[x - 97 - 1][y - 1 - 1].color != self.color:
+                elif board[y - 1 - 1][x - 97 - 1].color != self.color:
                     moves.append(chr(x - 1) + str(y - 1))
 
         if x < 104:
-            if board[x - 97 + 1][y - 1] is None:
+            if board[y - 1][x - 97 + 1] is None:
                 moves.append(chr(x + 1) + str(y))
-            elif board[x - 97 + 1][y - 1].color != self.color:
+            elif board[y - 1][x - 97 + 1].color != self.color:
                 moves.append(chr(x + 1) + str(y))
 
         if x > 97:
-            if board[x - 97 - 1][y - 1] is None:
+            if board[y - 1][x - 97 - 1] is None:
                 moves.append(chr(x - 1) + str(y))
-            elif board[x - 97 - 1][y - 1].color != self.color:
+            elif board[y - 1][x - 97 - 1].color != self.color:
                 moves.append(chr(x - 1) + str(y))
 
         return moves
@@ -66,4 +66,4 @@ class King:
         self.currPos = new_pos
 
     def to_string(self):
-        return "k" + self.color[0]
+        return "k" + str(self.color[0])

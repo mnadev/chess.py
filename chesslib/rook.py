@@ -16,9 +16,9 @@ class Rook:
 
         while x > 97:
             x = x - 1
-            if board[x - 97][y - 1] is None:
+            if board[y - 1][x - 97] is None:
                 moves.append(chr(x) + str(y))
-            elif board[x - 97][y - 1].color != self.color:
+            elif board[y - 1][x - 97].color != self.color:
                 moves.append(chr(x) + str(y))
                 break
             else:
@@ -29,9 +29,9 @@ class Rook:
 
         while x < 104:
             x = x + 1
-            if board[x - 97][y - 1] is None:
+            if board[y - 1][x - 97] is None:
                 moves.append(chr(x) + str(y))
-            elif board[x - 97][y - 1].color != self.color:
+            elif board[y - 1][x - 97].color != self.color:
                 moves.append(chr(x) + str(y))
                 break
             else:
@@ -42,9 +42,9 @@ class Rook:
 
         while y < 8:
             y = y + 1
-            if board[x - 97][y - 1] is None:
+            if board[y - 1][x - 97] is None:
                 moves.append(chr(x) + str(y))
-            elif board[x - 97][y - 1].color != self.color:
+            elif board[y - 1][x - 97].color != self.color:
                 moves.append(chr(x) + str(y))
                 break
             else:
@@ -55,9 +55,9 @@ class Rook:
 
         while y > 1:
             y = y - 1
-            if board[x - 97][y - 1] is None:
+            if board[y - 1][x - 97] is None:
                 moves.append(chr(x) + str(y))
-            elif board[x - 97][y - 1].color != self.color:
+            elif board[y - 1][x - 97].color != self.color:
                 moves.append(chr(x) + str(y))
                 break
             else:

@@ -24,7 +24,6 @@ board = [
      , Knight("g8","black"), Rook("h8","black")]
 ]
 
-board = [*zip(*board)]
 
 
 def checkmateOccured():
@@ -33,7 +32,7 @@ def checkmateOccured():
 
 
 def check_move_validity(piece, curr_pos, new_pos):
-    for m in piece.moves(curr_pos):
+    for m in piece.moves(board):
         if m == new_pos:
             return True;
 
@@ -42,7 +41,7 @@ def check_move_validity(piece, curr_pos, new_pos):
 
 def ask_user(player):
 
-    ask_str = player + "\'s move"
+    ask_str = "\n" + player + "\'s move:"
     move = input(ask_str).strip()
 
     while move.strip().__len__() < 5:
@@ -54,7 +53,7 @@ def ask_user(player):
 
 def print_board():
 
-    print("a  b  c  d  e  f  g  h")
+    print("   a  b  c  d  e  f  g  h")
 
     for i in range(0,8):
         row = str(i + 1)
@@ -62,14 +61,14 @@ def print_board():
             if board[i][j] is None:
                 row += " " + ".."
             else:
-                row += " " + board[i][j].to_string
+                row += " " + board[i][j].to_string()
         print(row)
 
 
 def move_piece(curr_pos, new_pos):
-    curr_piece = board[ord(curr_pos[0]) - 97 - 1][int(curr_pos[1]) - 1]
-    board[ord(new_pos[0]) - 97 - 1][int(new_pos[1]) - 1] = curr_piece
-    board[ord(curr_pos[0]) - 97 - 1][int(curr_pos[1]) - 1] = None
+    curr_piece = board[int(curr_pos[1]) - 1][ord(curr_pos[0]) - 97]
+    board[int(new_pos[1]) - 1][ord(new_pos[0]) - 97] = curr_piece
+    board[int(curr_pos[1]) - 1][ord(curr_pos[0]) - 97] = None
 
 
 if __name__ == '__main__':
@@ -78,7 +77,7 @@ if __name__ == '__main__':
 
     print_board()
 
-    while not self.checkmateOccured():
+    while not checkmateOccured():
 
         if whiteMove:
             move = ask_user("white")
@@ -97,7 +96,7 @@ if __name__ == '__main__':
                 else:
                     print("White wins")
 
-        curr_piece = board[ord(curr_pos[0]) - 97 - 1][int(curr_pos[1]) - 1]
+        curr_piece = board[int(curr_pos[1]) - 1][ord(curr_pos[0]) - 97]
 
         while not check_move_validity(curr_piece, curr_pos, new_pos):
             if whiteMove:
@@ -116,9 +115,9 @@ if __name__ == '__main__':
                     else:
                         print("White wins")
 
-            curr_piece = board[ord(curr_pos[0]) - 97 - 1][int(curr_pos[1]) - 1]
+            curr_piece = board[int(curr_pos[1]) - 1][ord(curr_pos[0]) - 97]
 
         move_piece(curr_pos, new_pos)
         print_board()
 
-        whiteMove = ~whiteMove
+        whiteMove = not whiteMove
