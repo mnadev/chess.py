@@ -106,10 +106,11 @@ def move_piece(curr, new):
 if __name__ == '__main__':
 
     whiteMove = True
+    resign = False
 
     print_board()
 
-    while not checkmate_occured(whiteMove):
+    while not checkmate_occured(whiteMove) or resign:
 
         if whiteMove:
             move = ask_user("white")
@@ -121,12 +122,15 @@ if __name__ == '__main__':
         new_pos = move[3:5]
 
         if move.__len__() > 5:
-            request = move[5:]
+            request = move[5:].strip()
             if request == "resign":
+                resign = True
                 if whiteMove:
                     print("Black wins")
+                    break
                 else:
                     print("White wins")
+                    break
 
         curr_piece = board[int(curr_pos[1]) - 1][ord(curr_pos[0]) - 97]
 
@@ -140,12 +144,15 @@ if __name__ == '__main__':
             new_pos = move[3:5]
 
             if move.__len__() > 5:
-                request = move[5:]
+                request = move[5:].strip()
                 if request == "resign":
+                    resign = True
                     if whiteMove:
                         print("Black wins")
+                        break
                     else:
                         print("White wins")
+                        break
 
             curr_piece = board[int(curr_pos[1]) - 1][ord(curr_pos[0]) - 97]
 
