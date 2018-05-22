@@ -70,4 +70,4 @@ class Rook:
         self.firstMove = False
 
     def to_string(self):
-        return "r" + self.color[0]
+        return "r" + str(self.color[0])

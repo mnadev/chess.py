@@ -70,4 +70,4 @@ class Knight:
         self.currPos = new_pos
 
     def to_string(self):
-        return "n" + self.color[0]
+        return "n" + str(self.color[0])

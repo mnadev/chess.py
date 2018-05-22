@@ -80,4 +80,4 @@ class Pawn:
         self.firstMove = False
 
     def to_string(self):
-        return "p" + self.color[0]
+        return "p" + str(self.color[0])

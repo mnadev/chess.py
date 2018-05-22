@@ -26,4 +26,4 @@ class Queen:
         self.rook.currPos = new_pos
 
     def to_string(self):
-        return "q" + self.color[0]
+        return "q" + str(self.color[0])
