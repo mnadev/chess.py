@@ -12,7 +12,7 @@ class Bishop:
         x = ord(self.currPos[0])
         y = int(self.currPos[1])
 
-        while x > 97 & y > 1:
+        while x > 97 and y > 1:
             x = x - 1
             y = y - 1
             if board[y - 1][x - 97] is None:
@@ -26,11 +26,9 @@ class Bishop:
         x = ord(self.currPos[0])
         y = int(self.currPos[1])
 
-        while x > 97 & y < 8:
+        while x > 97 and y < 8:
             x = x - 1
             y = y + 1
-            print(x)
-            print(y)
             if board[y - 1][x - 97] is None:
                 moves.append(chr(x) + str(y))
             elif board[y - 1][x - 97].color != self.color:
@@ -42,7 +40,7 @@ class Bishop:
         x = ord(self.currPos[0])
         y = int(self.currPos[1])
 
-        while x < 104 & y > 1:
+        while x < 104 and y > 1:
             x = x + 1
             y = y - 1
             if board[y - 1][x - 97] is None:
@@ -53,7 +51,7 @@ class Bishop:
             else:
                 break
 
-        while x < 104 & y < 8:
+        while x < 104 and y < 8:
             x = x + 1
             y = y + 1
             if board[y - 1][x - 97] is None:
