@@ -40,9 +40,9 @@ class Knight:
 
         if y < 7:
             if x < 103:
-                if board[y - 1 + 1][x - 97 + 2] is None:
+                if board[y - 1 + 1][x - 97 + 1] is None:
                     moves.append(chr(x + 2) + str(y + 1))
-                elif board[x - 97 + 2][y - 1 + 1].color != self.color:
+                elif board[y - 1 + 1][x - 97 + 1].color != self.color:
                     moves.append(chr(x + 2) + str(y + 1))
 
             if x > 98:
